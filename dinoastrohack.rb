@@ -34,16 +34,6 @@ class Astrodino
     end
   end
 
-  #Coloquen esto después de cada acción en el juego
-  def stats(@happy, @name, @energy, @space_food, @lunar_rock)
-    puts "The best astronaut ever - #{@name.upcase}"
-    puts "Raw food                - #{@space_food}"
-    puts "Lunar Rocks             - #{@lunar_rocks}"
-    puts "Gas                     - #{@gas}"
-    puts "Energy                  - #{@energy}"
-    puts "Am I happy?             - #{}"
-  end
-
   def pizza_job
 
     if @energy != 0
@@ -63,18 +53,5 @@ class Astrodino
     end
   
   end
-
-  def astro_fun
-    
-    if energy != 0
-      @energy -= 1
-      @happy = true
-      puts"#{@name} is having fun at the astro-club"
-      stats
-    end
-  
-  end
-
-
 
 end
