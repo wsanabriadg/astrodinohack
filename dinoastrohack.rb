@@ -13,6 +13,16 @@ class Astrodino
 
   end
 
+  #Coloquen esto después de cada acción en el juego
+  def stats(@happy, @name, @energy, @space_food, @lunar_rock)
+    puts "The best astronaut ever - #{@name.upcase}"
+    puts "Raw food                - #{@space_food}"
+    puts "Lunar Rocks             - #{@lunar_rocks}"
+    puts "Gas                     - #{@gas}"
+    puts "Energy                  - #{@energy}"
+    puts "Am I happy?             - #{}"
+  end
+
   def pizza_job
 
     if @energy != 0
@@ -22,12 +32,12 @@ class Astrodino
         if pizza_job_rand == 1
         @lunar_rock += rand(1..3)
         puts "Normal day at the job"
-        @feed_back
+        stats
         elsif pizza_job_rand == 2
         @space_food += 1 
         @lunar_rock += rand(1..2) + 2 
         puts "¡Lucky day!"
-        @feed_back
+        stats
         end
     end
   
@@ -38,7 +48,8 @@ class Astrodino
     if energy != 0
       @energy -= 1
       @happy = true
-      puts"#{@name} is having fun at"
+      puts"#{@name} is having fun at the astro-club"
+      stats
     end
   
   end
