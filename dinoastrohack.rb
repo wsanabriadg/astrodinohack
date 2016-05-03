@@ -11,6 +11,7 @@ class Astrodino
   end
   #Coloquen esto después de cada método en el juego
   def stats
+    system("clear")
     puts "The best astronaut ever - #{@name.upcase}"
     puts "Raw food                - #{@space_food}"
     puts "Lunar Rocks             - #{@lunar_rocks}"
@@ -32,6 +33,15 @@ class Astrodino
     else
       dead 
     end
+  end
+
+  def get_gas
+    if @lunar_rocks > 4
+      @gas += 4
+    else
+      puts "Not enough fonds..."
+    end
+    stats    
   end
 
 end
