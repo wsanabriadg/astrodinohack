@@ -9,14 +9,20 @@ class Astrodino
     @lunar_rocks = rand(3) + 1
     @gas = 4
   end
-  #Coloquen esto después de cada acción en el juego
-  def stats(@happy, @name, @energy, @space_food, @lunar_rock)
+  #Coloquen esto después de cada método en el juego
+  def stats
     puts "The best astronaut ever - #{@name.upcase}"
     puts "Raw food                - #{@space_food}"
     puts "Lunar Rocks             - #{@lunar_rocks}"
     puts "Gas                     - #{@gas}"
     puts "Energy                  - #{@energy}"
-    puts "Am I happy?             - #{}"
+    puts "Am I happy?             - #{@happy}"
   end
 
+  def party
+    @energy = @energy -= 1
+    puts "Yayyyy"
+    @happy = !@happy
+    stats
+  end
 end
