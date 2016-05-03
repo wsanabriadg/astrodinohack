@@ -19,10 +19,19 @@ class Astrodino
     puts "Am I happy?             - #{@happy}"
   end
 
+  def dead
+    puts "WE ARE TRULY SORRY FOR YOUR LOSS..."
+  end
+
   def party
-    @energy = @energy -= 1
+    if @energy > 0
+      @energy = @energy -= 1
     puts "Yayyyy"
     @happy = !@happy
     stats
+    else
+      dead 
+    end
   end
+
 end
