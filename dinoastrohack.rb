@@ -1,15 +1,15 @@
-class Astrodino
+class AstroDino
 
   def initialize
-    @energy = rand(2) + 2
+    @energy = rand(4)+1 + 2
     @happy = false
-    puts "Put your astro-dinosaur's name: "
+    puts "Insert your astro-dinosaur's name: "
     @name = gets.chomp
     @space_food = rand(5)
     @lunar_rocks = rand(3) + 1
     @gas = 4
   end
-  #Coloquen esto después de cada método en el juego
+
   def stats
     system("clear")
     puts "The best astronaut ever - #{@name.upcase}"
@@ -20,55 +20,100 @@ class Astrodino
     puts "Am I happy?             - #{@happy}"
   end
 
-  def dead
-    puts "WE ARE TRULY SORRY FOR YOUR LOSS..."
+  def dead #we'll never call this by ourselves
+    if @energy <= 0
+      puts "WE ARE TRULY SORRY FOR YOUR LOSS..."
+      abrupt
+    end
   end
 
-  def party
+  def pty #party
     if @energy > 0
       @energy = @energy -= 1
-    puts "Yayyyy"
-    @happy = !@happy
+    @happy = true
     stats
+    puts "That party was awesome!"
     else
       dead 
     end
   end
 
-  def get_gas
+  def gg #get gas
     if @lunar_rocks > 4
       @gas += 4
+      @energy -= 1
+      @lunar_rocks -= 4
+      stats
+      puts "Take your gas!"
     else
+      stats
       puts "Not enough fonds..."
     end
-    stats    
+  end
 
-  def pizza_job
-
-    if @energy != 0
+  def pj #pizza job
+    if @energy > 2 && @gas >= 1
       @energy -= 2
       @gas -= 1
       pizza_job_rand = rand(1..2)
         if pizza_job_rand == 1
-        @lunar_rock += rand(1..3)
-        puts "Normal day at the job"
-        stats
+          @lunar_rocks += rand(1..3)
+          stats
+          puts "Normal day at the job"
         elsif pizza_job_rand == 2
-        @space_food += 1 
-        @lunar_rock += rand(1..2) + 2 
-        puts "¡Lucky day!"
-        stats
+          @space_food += 1
+          @lunar_rocks += rand(1..2) + 2
+          stats
+          puts "¡Lucky day!"
         end
+    elsif @energy == 0
+      dead
+    else
+      stats
+      puts "You don't have enough energy or gas to work"
     end
   end
 
-  def bounting_hunter
-    if @energy > 0
-      @nergy = @energy -=3
+  def bh #bounty hunting
+    if @energy > 3
+      @energy = @energy -= 3
+    rand_bh = rand(1..3)    
+      if rand_bh == 1
+        @gas = @gas + rand(3) + 1
+        stats
+        puts "You've found yourself some gas!"
+      elsif rand_bh == 2
+        @lunar_rocks = @lunar_rocks + rand(3) + 1
+        stats
+        puts "To the moon and beyond!"
+      elsif rand_bh == 3
+        @space_food = @space_food + rand(3) + 1
+        stats
+        puts "Some food to your stash!"
+      end
+    elsif @energy == 0
+      dead
+    else
+      stats
+      puts "You don't have enough energy to go bounty hunting..."
     end
-    @gas = rand(5) + 1
-    @lunar_rock = rand(8) + 1
-    @space_food = rand(3) + 1
+  end
+
+  def cf #cook food
+    if @energy > 2 && @space_food > 0
+      @energy = @energy -= 1
+      @energy = @energy + @space_food
+      @space_food = 0 
+      stats
+      puts "Nice cooking!"
+    elsif @energy == 0
+      dead
+    else
+      "You don't have enough energy or food to cook..."
+    end
   end
 
 end
+
+f = AstroDino.new
+f.stats
