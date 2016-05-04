@@ -35,7 +35,6 @@ class Astrodino
     end
   end
 
-<<<<<<< HEAD
   def get_gas
     if @lunar_rocks > 4
       @gas += 4
@@ -43,7 +42,7 @@ class Astrodino
       puts "Not enough fonds..."
     end
     stats    
-=======
+
   def pizza_job
 
     if @energy != 0
@@ -61,8 +60,15 @@ class Astrodino
         stats
         end
     end
-  
->>>>>>> 33e2a0e2cf369f1665bae1a4a1fd5eaa45916aae
+  end
+
+  def bounting_hunter
+    if @energy > 0
+      @nergy = @energy -=3
+    end
+    @gas = rand(5) + 1
+    @lunar_rock = rand(8) + 1
+    @space_food = rand(3) + 1
   end
 
 end
