@@ -1,5 +1,0 @@
-# astrodinohack
-
-holavale - arg
-
-valehola
